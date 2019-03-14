@@ -1,5 +1,5 @@
 module "label1" {
-  source      = "../../../terraform-null-label/"
+  source      = "../../"
   namespace   = "CloudPosse"
   environment = "UAT"
   stage       = "build"
@@ -16,7 +16,7 @@ module "label1" {
 }
 
 module "label2" {
-  source    = "../../../terraform-null-label/"
+  source    = "../../"
   context   = "${module.label1.context}"
   name      = "Charlie"
   stage     = "test"
@@ -29,7 +29,7 @@ module "label2" {
 }
 
 module "label3" {
-  source    = "../../../terraform-null-label/"
+  source    = "../../"
   name      = "Starfish"
   stage     = "release"
   context   = "${module.label1.context}"
