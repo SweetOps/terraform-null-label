@@ -48,8 +48,8 @@ output "label3_tags" {
   value = "${module.label3.tags}"
 }
 
-output "gcp_list_of_maps" {
-  value = "${module.label1.gcp_list_of_maps}"
+output "gcp_labels" {
+  value = "${module.label1.gcp_labels}"
 }
 
 output "label3_context" {
