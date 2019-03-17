@@ -44,8 +44,8 @@ output "tags_as_list_of_maps" {
 }
 
 output "gcp_labels" {
-  value       = ["${local.gcp_labels}"]
-  description = "List of maps, which can be used in GCP resources"
+  value       = "${local.gcp_labels}"
+  description = "Normalized labels map, which can be used in GCP resources"
 }
 
 output "context" {
