@@ -43,8 +43,8 @@ output "tags_as_list_of_maps" {
   description = "Additional tags as a list of maps, which can be used in several AWS resources"
 }
 
-output "gcp_list_of_maps" {
-  value       = ["${local.gcp_list_of_maps}"]
+output "gcp_labels" {
+  value       = ["${local.gcp_labels}"]
   description = "List of maps, which can be used in GCP resources"
 }
 

@@ -50,9 +50,13 @@ locals {
     compact(list("Name", local.namespace != "" ? "Namespace" : "", local.environment != "" ? "Environment" : "", local.stage != "" ? "Stage" : "")),
     compact(list(local.id, local.namespace, local.environment, local.stage))
     )}"
+  generated_gcp_labels = "${zipmap(
+    compact(list("name", local.namespace != "" ? "namespace" : "", local.environment != "" ? "environment" : "", local.stage != "" ? "stage" : "")),
+    compact(list(local.id, local.namespace, local.environment, local.stage))
+    )}"
   tags                     = "${merge(zipmap(local.context_local["tags_keys"], local.context_local["tags_values"]), local.generated_tags, var.tags)}"
   tags_as_list_of_maps     = ["${data.null_data_source.tags_as_list_of_maps.*.outputs}"]
-  gcp_list_of_maps         = "${list(merge(zipmap(local.context_local["tags_keys"], local.context_local["tags_values"]), local.generated_tags, var.tags))}"
+  gcp_labels               = "${merge(zipmap(local.context_local["tags_keys"], local.context_local["tags_values"]), local.generated_gcp_labels, var.tags)}"
   label_order_default_list = "${list("namespace", "environment", "stage", "name", "attributes")}"
   label_order_context_list = "${distinct(compact(local.context_local["label_order"]))}"
   label_order_final_list   = ["${distinct(compact(coalescelist(var.label_order, local.label_order_context_list, local.label_order_default_list)))}"]
