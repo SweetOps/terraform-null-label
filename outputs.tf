@@ -38,6 +38,11 @@ output "tags" {
   description = "Normalized Tag map"
 }
 
+output "gcp_labels" {
+  value       = local.enabled ? local.gcp_labels : {}
+  description = "Normalized labels map, which can be used in GCP resources"
+}
+
 output "tags_context" {
   value       = local.enabled ? local.tags : {}
   description = "Normalized labels map, which can be used in GCP resources"
